@@ -1,0 +1,13 @@
+<h1>New Question</h1>
+
+
+
+<form #formData = "ngForm">
+  <fieldset>
+    <p>Question: <textarea name="question" rows="3" cols="30" [(ngModel)]="newQuestion.question" required minlength="15"></textarea><span *ngIf="!formData.valid">min length 15</span></p>
+    <p>Correct Answer: <input type="text" name="correct" value="" required [(ngModel)]="newQuestion.answers[0].answer"><span *ngIf="!formData.valid">required</span></p>
+    <p>Fake Answer 1: <input type="text" name="wrong" value="" required [(ngModel)]="newQuestion.answers[1].answer"><span *ngIf="!formData.valid">required</span></p>
+    <p>Fake Answer 2: <input type="text" name="wrong2" value="" required [(ngModel)]="newQuestion.answers[2].answer"><span *ngIf="!formData.valid">required</span></p>
+    <a [routerLink]="['/']"><button type="button">Cancel</button></a><button type="submit" [disabled]="!formData.valid" (click)="submitQuestion(newQuestion)">Add Question</button>
+  </fieldset>
+</form>

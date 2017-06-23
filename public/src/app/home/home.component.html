@@ -1,0 +1,23 @@
+<div class="login" *ngIf="!username">
+  <p>You are not logged in! Please login to play</p>
+  <form #loginForm = "ngForm" (submit)="login(newUser)">
+    Username: <input type="text" name="username" value="" required [(ngModel)]="newUser.username"> <button [disabled]="!loginForm.valid">Login</button>
+  </form>
+
+</div>
+<div class="result" *ngIf="testResult">
+  <p>great job {{testResult.username}}!</p>
+  <p>your score was {{testResult.score}}/3</p>
+  <p>observables!</p>
+</div>
+<div class="play" *ngIf = "username">
+  
+  <p>Click button to start game</p>
+  <button (click)="play()">Play</button>
+</div>
+
+<p>Search : <input type="text" name="search" value="" [(ngModel)]="search"></p>
+<table>
+  <tr><th>Name</th><th>Score</th><th>Percentage</th></tr>
+  <tr *ngFor="let test of tests | filter: search "><td>{{test._user.username}}</td><td>{{test.score}}/3</td><td>{{test.score / 3.0 * 100 | number: "1.0-2"}} %</td></tr>
+</table>
