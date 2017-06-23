@@ -38,8 +38,8 @@ export class PlayComponent implements OnInit {
 
   }
   submitTest(data){
-    console.log(Math.floor((parseInt(data.value.scores0)+parseInt(data.value.scores1)+parseInt(data.value.scores2))%10))
-    this.score = Math.floor(Math.floor((parseInt(data.value.scores0)+parseInt(data.value.scores1)+parseInt(data.value.scores2))%10)/10)
+    console.log(Math.floor((parseInt(data.value.scores0)+parseInt(data.value.scores1)+parseInt(data.value.scores2))/10))
+    this.score = Math.floor((parseInt(data.value.scores0)+parseInt(data.value.scores1)+parseInt(data.value.scores2))/10)
 
     this._dbService.createTest({_user: this.user_id, score: this.score, percent: this.score/3.0*100}).then(()=>{
       this._comm.updateTest({_user: this.user_id, score: this.score, percent: this.score/3.0*100})
